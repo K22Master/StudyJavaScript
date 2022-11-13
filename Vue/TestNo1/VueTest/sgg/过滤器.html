@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>过滤器</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/dayjs/1.11.5/dayjs.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2>显示格式化后的事件</h2>
+        <!-- 计算属性实现 -->
+        <h3>现在是：{{calculatingTime}}</h3>
+        <!-- methods实现 -->
+        <h3>现在是：{{getTime()}}</h3>
+        <!-- 过滤器实现 -->
+        <h3>现在是:{{time|TimeGl}}</h3>
+    </div>
+    <script src="../../Js/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                time: Date.now()
+            },
+            computed: {
+                calculatingTime() {
+                    return dayjs(this.time).format('YYYY-MM-DD HH:mm:ss');
+                }
+            },
+            methods: {
+                getTime() {
+                    return dayjs(this.time).format('YYYY-MM-DD HH:mm:ss');
+                }
+            },
+            filters: {
+                TimeGl(val) {
+                    return dayjs(val).format('YYYY-MM-DD HH:mm:ss');
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

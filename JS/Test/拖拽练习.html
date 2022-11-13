@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box1{
+            width: 200px;
+            height: 200px;
+            background-color:#bfa;
+            position:absolute;
+        }
+    </style>
+</head>
+<body>
+    <div id="box1"></div>
+    <!-- 拖拽box1元素流程
+        1，当鼠标在被拖拽元素上按下时，开始拖拽 onmousedown
+        2，当鼠标移动时被拖拽元素跟随鼠标移动 onmousemove
+        3、当鼠标松开时，被拖拽元素固定在当前位置 onmouseup
+        
+    -->
+    <script>
+        window.onload=function(){
+            var box1=document.getElementById("box1");
+            // 当鼠标在被拖拽元素上按下时，开始拖拽 onmousedown
+            box1.onmousedown=function(e){
+                // 在点击时求出偏移量
+                var el=e.clientX-box1.offsetLeft;
+                var et=e.clientY-box1.offsetTop;
+                // 当鼠标移动时被拖拽元素跟随鼠标移动 onmousemove
+                document.onmousemove=function(e){
+                    // 通过得知元素的偏移量和鼠标的偏移量，相减
+                    // 即可以得知鼠标点击时与原元素之间的偏移值，再减去
+                    // 可以实现鼠标在物体内部点击移动
+                    var left=e.clientX-el;
+                    var top=e.clientY-et;
+                    box1.style.left=left+"px";
+                    box1.style.top=top+"px";
+                };
+            // 当鼠标松开时，被拖拽元素固定在当前位置 onmouseup
+            box1.onmouseup=function(){
+                document.onmousemove=null;
+            };
+            }
+        };
+    </script>
+</body>
+</html>

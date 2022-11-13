@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="showinfo">点我提示信息（无参）</button>
+        <button @click="showinfo2($event,59)">点我提示信息（带参）</button>
+    </div>
+    <script src="../../Js/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#app',//用于挂载要管理的元素
+            data: {//定义数据
+            },
+            methods: {
+                showinfo() {
+                    alert("你好呀！");
+                },
+                showinfo2(event, number) {
+                    console.log(number, event);
+                    alert("你呀！！！");
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

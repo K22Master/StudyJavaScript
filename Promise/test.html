@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试程序</title>
+</head>
+
+<body>
+    <button id="btn">点我抽奖</button>
+    <script>
+        // 生成随机数函数
+        function rand(m, n) {
+            return Math.ceil(Math.random() * (n - m + 1) + m - 1);
+        }
+        const btn = document.querySelector('#btn');
+        btn.addEventListener('click', () => {
+            const p = new Promise((res, rej) => {
+                setTimeout(() => {
+                    let n = rand(1, 100);
+                    if (n <= 30) {
+                        res(n);
+                    } else {
+                        rej(n);
+                    }
+                }, 1000)
+            });
+            p.then((data) => {
+                alert('恭喜中奖！' + data);
+            }, (data) => {
+                alert('谢谢惠顾！' + data);
+            });
+        });
+
+    </script>
+</body>
+
+</html>

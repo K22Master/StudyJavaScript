@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <h2>{{sumprice}}</h2>
+</div>
+<script src="../Js/vue.js"></script>
+<script>
+    const app =new Vue({
+        el:"#app",
+        data:{
+            books:[
+                {id:101,name:"显示许多",price:105},
+                {id:102,name:"Java",price:78},
+                {id:103,name:"C",price:155},
+                {id:104,name:"C#",price:92},
+            ]
+        },
+        computed:{
+            sumprice:function (){
+                let result=0;
+                // for (let i=0;i<this.books.length;i++){
+                //     result+=this.books[i].price;
+                // }
+                for (let book of this.books){
+                    result+=book.price
+                }
+                return result
+            }
+        }
+    })
+</script>
+</body>
+</html>

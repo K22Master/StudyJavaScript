@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax POST 请求 </title>
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            border: 1px solid #baf;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <script>
+        // 获取对象
+        const box = document.querySelector('#box');
+        box.addEventListener('mouseover', function () {
+            console.log('test');
+            // 创建对象
+            const xhr = new XMLHttpRequest();
+            // 初始化
+            xhr.open('POST', 'http://127.0.0.1:8000/server');
+            // 设置请求头信息
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            // 自定义请求头
+            xhr.setRequestHeader('name', 'Fuzi');
+            // POST发送时在此处携带参数
+            xhr.send('a=100&b=100&c=100');
+            // 绑定事件
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status >= 200 && xhr.status < 300) {
+                        // 处理返回结果
+                        box.innerHTML = xhr.response;
+                    }
+                }
+            };
+        });
+    </script>
+</body>
+
+</html>

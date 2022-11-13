@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+    <div id="app">
+        <!--    View-->
+        <h2>学生名称：{{name}}</h2>
+        <h2>学校地址：{{address}}</h2>
+    </div>
+    <script src="../../Js/vue.js"></script>
+    <script>
+        // <!--    ViewModel-->
+        new Vue({
+            el: "#app",
+            data: {
+                //Model
+                name: "湖工",
+                address: "孝感"
+            }
+        })
+    </script>
+</body>
+
+</html>

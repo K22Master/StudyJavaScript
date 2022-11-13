@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .red {
+            width: 200px;
+            height: 100px;
+            background-color: red;
+        }
+
+        .textcolor1 {
+            color: aqua;
+        }
+
+        .textcolor2 {
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!--    绑定class样式--字符串写法，适用于：样式类名不确定，需要动态指定的-->
+        <div class="red" :class="txt" @click="color">
+            {{test}}
+        </div>
+        <!-- 绑定class样式--数组写法，适用于：要绑定的样式个数不确定、名字不确定 -->
+        <div class="red" :class="classArr"></div>
+        <!-- 绑定class样式--对象写法，适用于：要绑定的样式个数不确定，名字不确定，但要动态决定使用 -->
+        <div class="textcolor1" :class=""></div>
+    </div>
+    <script src="../../Js/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',//用于挂载要管理的元素
+            data: {//定义数据
+                test: "测试文本",
+                txt: "textcolor1",
+                classArr: ['textcolor1', 'textcolor2'],
+                classObj: {
+                    textcolor1: false,
+                    textcolor2: false
+                }
+            },
+            methods: {
+                color() {
+                    this.txt = "textcolor2"
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>

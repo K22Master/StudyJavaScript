@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全选练习</title>
+</head>
+<body>
+    <form action="" method="post">
+        你热爱的运动是？<input type="checkbox" id="checkboxAll">全选/全不选
+        <br>
+        <input type="checkbox" name="items" value="足球">足球
+        <input type="checkbox" name="items" value="篮球">篮球
+        <input type="checkbox" name="items" value="羽毛球">羽毛球
+        <input type="checkbox" name="items" value="乒乓球">乒乓球
+        <br>
+        <input type="button" id="Allbtn" value="全 选">
+        <input type="button" id="Nobtn" value="全不选">
+        <input type="button" id="Rebtn" value="反 选">
+        <input type="button" id="Sendbtn" value="提 交">
+    </form>
+    <script>
+        window.onload=function(){
+            // 1.Allbtn
+            var Allbtn=document.getElementById("Allbtn");
+            var items=document.getElementsByName("items");
+            var checkboxAll=document.getElementById("checkboxAll");
+            Allbtn.onclick=function(){
+                for(var i=0;i<items.length;i++){
+                    items[i].checked=true;
+                    // alert(items[i].value);
+                }
+                checkboxAll.checked=true;
+            };
+            // 2。Nobtn
+            var Nobtn=document.getElementById("Nobtn");
+            Nobtn.onclick=function(){
+                for(var i=0;i<items.length;i++){
+                    items[i].checked=false;
+                }
+                checkboxAll.checked=false;
+            };
+            // 3.Rebtn
+            var Rebtn=document.getElementById("Rebtn");
+            Rebtn.onclick=function(){
+                checkboxAll.checked=true;
+                for(var i=0;i<items.length;i++){
+                    items[i].checked=!items[i].checked;
+                    if(!items[i].checked){
+                        checkboxAll.checked=false;
+                    }
+                }
+            };
+            // 4.Sendbtn
+            var Sendbtn=document.getElementById("Sendbtn");
+            Sendbtn.onclick=function(){
+                var str="";
+                var flage=false;
+                for(var i=0;i<items.length;i++){
+                    if(items[i].checked==true){
+                        str+=items[i].value;
+                        str+="\n";
+                        flage=true;
+                    }
+                }
+                if(flage){
+                    alert("你喜欢的运动有"+str);
+                }else{
+                    alert("你还没选择");
+                }
+            };
+            // 5.checkboxAll
+            checkboxAll.onclick=function(){
+                for(var i=0;i<items.length;i++){
+                    items[i].checked=this.checked;
+                };
+            }
+            // 6、items
+            for(var i=0;i<items.length;i++){
+                   items[i].onclick=function(){
+                    // 将checkboxAll的设置初始值为ture
+                    checkboxAll.checked=true;
+                    for(var j=0;j<items.length;j++){
+                        // 判断四个多选框是否全选
+                        // 要有一个没选中，就不是全选
+                    if(!items[j].checked){
+                        // 一旦进入判断，则证明不是全选
+                        // checkboxAll的值设置为false
+                        checkboxAll.checked=false;
+                        // 有一个为falss则不再进行循环
+                        break;
+                    }
+                     }
+                   };
+                }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+<!--    1. .stop修饰符的使用-->
+    <div @click="divclick">
+        aaaaa
+        <button @click.stop="btnclick">按钮</button>
+    </div>
+<!--    2. .prevent修饰符的使用-->
+<!--    阻止默认行为-->
+    <form>
+        <input type="submit" value="提交" @click.prevent="submitclick">
+    </form>
+<!--    3. .once修饰符-->
+<!--    只能触发一次-->
+    <button @click.once="btnclick2">
+        button1
+    </button>
+</div>
+<script src="../Js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el:'#app',
+        data:{
+
+        },
+        methods:{
+            divclick(){
+                console.log("divclick");
+            },
+            btnclick() {
+                console.log("btnclik");
+            },
+            submitclick(){
+                console.log("submitclick");
+            },
+            btnclick2() {
+                console.log("btnclik2");
+            }
+        }
+    })
+</script>
+</body>
+</html>

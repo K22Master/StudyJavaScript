@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <h2>人员信息</h2>
+    <input type="text" placeholder="请输入名字" v-model="keyname">
+    <ul>
+        <li v-for="(p,index) in filperson" :key="p.id" >
+            {{p.id}}---{{p.name}}---{{p.sex}}
+        </li>
+    </ul>
+    <hr>
+</div>
+<script src="../../Js/vue.js"></script>
+<script>
+    const vm =new Vue({
+        el:'#app',//用于挂载要管理的元素
+        data:{//定义数据
+            keyname:'',
+            persons:[
+                {id:'001',name:'马冬梅',age:18,sex:'女'},
+                {id:'002',name:'汉晋冬',age:19,sex:'女'},
+                {id:'003',name:'周杰伦',age:20,sex:'男'},
+                {id:'004',name:'分艾伦',age:28,sex:'男'}
+            ],
+            //监视属性时调用
+            // filperson:[]
+        },
+        //当计算属性和监视属性都能实现的时候,优先使用计算属性
+        //通过计算属性实现
+        computed:{
+            filperson(){
+                //第二个返回是一个新数组，但不是第一个的返回值，所以要写第一个返回
+                return this.persons.filter((p)=>{
+                    return p.name.indexOf(this.keyname)!==-1
+                })
+            }
+        }
+        //通过监视属性，完成列表过滤
+        // watch:{
+        //     keyname:{
+        //         immediate:true,
+        //         handler(val){
+        //             this.filperson =this.persons.filter((p)=>{
+        //                 return p.name.indexOf(val)!==-1
+        //             })
+        //         }
+        //     }
+        // }
+    })
+</script>
+</body>
+</html>

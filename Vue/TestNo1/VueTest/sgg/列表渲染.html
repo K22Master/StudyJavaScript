@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+<!--    遍历数组类型的数据-->
+    <h2>人员信息</h2>
+    <ul>
+        <li v-for="(p,index) in persons" :key="index" >
+            {{p.id}}---{{p.name}}---{{p.age}}
+        </li>
+    </ul>
+    <hr>
+<!--    遍历对象类型的数据-->
+    <h2>车辆信息</h2>
+    <ul>
+        <li v-for="(c,index) in car" :key="index">
+            {{index}}--{{c}}
+        </li>
+    </ul>
+</div>
+<script src="../../Js/vue.js"></script>
+<script>
+    const vm =new Vue({
+        el:'#app',//用于挂载要管理的元素
+        data:{//定义数据
+            persons:[
+                {id:'001',name:'索菲亚',age:18},
+                {id:'002',name:'魏书生',age:19},
+                {id:'003',name:'傅里叶',age:20}
+            ],
+            car:{
+                name:'AE86',
+                color:'黑白',
+                jice:'56W'
+            }
+        },
+    })
+</script>
+</body>
+</html>

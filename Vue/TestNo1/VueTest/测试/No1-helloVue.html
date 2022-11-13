@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .color{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <li v-for="(item,index) in movies" :class="{color:index===isIndex}" @click="update(index)">{{item}}</li>
+    </ul>
+    <a v-bind:href="url">百度一下</a>
+</div>
+<!--先引用vue.js-->
+<script src="../Js/vue.js"></script>
+<script>
+// <!--使用时，传入的参数为对象类型-->
+    //let(表示变量)/const(表示常量)
+    new Vue({
+        el:'#app',//用于挂载要管理的元素
+        data:{//定义数据
+            message:'Hello World',
+            url:"http://www.baidu.com"
+        },
+        methods:{
+            update:function (index){
+                return  this.isIndex=index;
+            }
+        }
+    })
+</script>
+</body>
+</html>

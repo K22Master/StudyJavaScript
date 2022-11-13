@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .active{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <img v-bind:src="imgurl">
+<!--    class使用了键值对的方式-->
+    <h2 :class="{active:isAvt}">{{message}}</h2>
+    <h2 :class="getClass">asfaf</h2>
+<!--    通过触发设置函数修改class显示的参数-->
+    <button @click="btnClick">单击</button>
+</div>
+<script src="../Js/vue.js"></script>
+<script>
+    const app=new Vue({
+        el:'#app',
+        data:{
+            message:'Hello!',
+            imgurl:'https://img14.360buyimg.com/seckillcms/s280x280_jfs/t1/150184/13/20640/91686/61e504ffE65d6e8d8/27b90b27d3717104.png.webp',
+            //通过一个变量来决定是否显示属性
+            isAvt:true
+        },
+        methods:{
+            //通过该函数来确定变量的值
+            btnClick: function (){
+                this.isAvt=!this.isAvt;
+            },
+            getClass:function (){
+                return aavvb;
+            }
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>案例</title>
+</head>
+
+<body>
+    用户名：<input type="text" id="username">
+    <p></p>
+    <script>
+        // 获取input元素
+        const input = document.querySelector('#username');
+        const p = document.querySelector('p');
+        // 创建handle函数
+        function handle(data) {
+            input.style.border = "solid 1px red";
+            p.innerHTML = data.msg;
+        };
+        // 颁定事件
+        input.onblur = function () {
+            let username = this.value;
+            // 发送请求
+            // 创建script标签
+            const script = document.createElement('script');
+            // 设置标签的src属性
+            script.src = 'http://127.0.0.1:9000/check-name'
+            // 将script插入文档中
+            document.body.appendChild(script);
+        };
+    </script>
+</body>
+
+</html>

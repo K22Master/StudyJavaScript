@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box1{
+            width: 200px;
+            height: 200px;
+            background-color: #bfa;
+        }
+    </style>
+</head>
+<body>
+    <div id="box1"></div>
+    <script>
+        var box1=document.getElementById("box1");
+        box1.onwheel=function(e){
+            // 在edge中，向下滚动，其值为负数，向上滚动其值为正数
+            if(e.wheelDelta<0){
+                box1.style.height=box1.clientHeight+10+"px";
+            }else{
+                if(box1.clientHeight<100){
+                    box1.style.height="100px";
+                    alert("不能在缩短了！")
+                    
+                }else{
+                    box1.style.height=box1.clientHeight-10+"px";
+                }
+            }
+        }
+    </script>
+</body>
+</html>

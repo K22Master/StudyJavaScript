@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box1{
+            width: 150px;
+            height: 150px;
+            background-color: #bfa;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div id="box1"></div>
+    <script>
+        var box1=document.getElementById("box1");
+        window.onload=function(){
+            document.onkeydown=function(e){
+                // console.log(e.keyCode);
+                // var JL=0;
+                // if(e.keyCode==39){
+                //     JL=JL+10;
+                //     box1.style.left=JL+"px";
+                // }
+                switch(e.keyCode){
+                    case 37:
+                        box1.style.left=box1.offsetLeft-10+"px";
+                        break;
+                    case 39:
+                        box1.style.left=box1.offsetLeft+10+"px";
+                        break;
+                    case 38:
+                        box1.style.top=box1.offsetTop-10+"px";
+                        break;
+                    case 40:
+                        box1.style.top=box1.offsetTop+10+"px";
+                        break;
+                }
+            };
+        };
+    </script>
+</body>
+</html>

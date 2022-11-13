@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="Js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{name}}今年{{age}}岁了
+        <button @click="age++">点我</button>
+        <input type="text" v-model:value="age"><br>
+        生命周周期函数测试————{{hello}}
+    </div>
+</body>
+<script>
+    var app=new Vue({
+        el:"#app",
+        data:{
+            name:"张三",
+            hello:"未测试",
+            age:1
+        },
+        created(){
+            this.hello="测试开始（创建测试！）"
+        }
+    });
+</script>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 创建map
+        let m = new Map();
+        // 添加元素
+        m.set('name', 'Tom');
+        m.set('say', function () {
+            console.log("QAAAA");
+        });
+        //大小
+        console.log(m.size);
+        // 删除
+        console.log(m.delete('say'));
+        // 获取
+        console.log(m.get('name'));
+        // 清空
+        // m.clear();
+        // 遍历
+        for (let item of m) {
+            console.log(item);
+        }
+        console.log(m);
+    </script>
+</body>
+
+</html>

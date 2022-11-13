@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+    <div id="app">
+        <h2>今天天气很{{tagg}}</h2>
+        <button @click="tq=!tq">切换</button>
+        <hr>
+        <h2>a的值{{number.a}}</h2>
+        <button @click="number.a++">点我a加一</button>
+        <hr>
+        <h2>b的值为{{number.b}}</h2>
+        <button @click="number.b++">点我b加一</button>
+    </div>
+    <script src="../../Js/vue.js"></script>
+    <script>
+
+        const vm = new Vue({
+            el: '#app',//用于挂载要管理的元素
+            data: {//定义数据
+                tq: true,
+                number: {
+                    a: 1,
+                    b: 1
+                }
+            },
+            methods: {
+                // qf(){
+                //     this.tq=!this.tq
+                // }
+            },
+            computed: {
+                tagg() {
+                    return this.tq ? "炎热" : "凉爽"
+                }
+            },
+            watch: {
+                tq: {
+                    immediate: true,//初始化时让handler调用一下
+                    //handler什么时候被调用，当监视的值发生改变
+                    handler(newValue, oldValue) {
+                        console.log("天气被修改！")
+                    }
+                },
+                //监视多级结构中某个属性的改变
+                // 'number.a':{
+                //     handler(newValue, oldValue) {
+                //         console.log("a被改变")
+                //     }
+                // },
+                //监视多结构中所有属性的变化
+                number: {
+                    deep: true,
+                    handler(newValue, oldValue) {
+                        console.log("number发生了改变")
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

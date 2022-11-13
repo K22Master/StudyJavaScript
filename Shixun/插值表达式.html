@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="Js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        姓名——{{name}}<br>
+        年龄——{{age}}<br>
+        她说：<input type="text" v-model:value="say"><br>
+        她喜欢{{say}}<br>
+        <button @click="info()">点我</button>
+    </div>
+</body>
+<script>
+let app =new Vue({
+    el:"#app",
+    data:{
+        name:"张悠",
+        age:18,
+        say:""
+    },
+    methods:{
+        info(){
+            console.log("我出现了！");
+        }
+    }
+});
+</script>
+
+</html>

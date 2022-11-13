@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>二级菜单</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+        a,img{
+            border: 0;
+            text-decoration: none;
+        }
+        span{
+            display:inline-block;
+            background-color: beige;
+            height: 30px;
+            width: 100px;
+            text-align: center;
+            line-height: 30px;
+        }
+        ul{
+            background-color: aqua;
+            width: 100px;
+            height: 0;
+            overflow: hidden;
+        }
+        ul li{
+            height: 25px;
+            line-height: 25px;
+            text-align: center;
+        }
+        .newHeight{
+            height: 75px;
+        }
+    </style>
+</head>
+<body>
+    <div id="my_menu">
+        <div>
+            <span>在线工具</span>
+            <ul>
+                <li> <a href="#">AAAA</a></li>
+                <li> <a href="#">AAAA</a></li>
+                <li> <a href="#">AAAA</a></li>
+            </ul>
+        </div>
+        <div>
+            <span>支持我们</span>
+            <ul>
+                <li> <a href="#">BBBB</a></li>
+                <li> <a href="#">BBBB</a></li>
+                <li> <a href="#">BBBB</a></li>
+            </ul>
+        </div>
+        <div>
+            <span>合作伙伴</span>
+            <ul>
+                <li> <a href="#">CCCC</a></li>
+                <li> <a href="#">CCCC</a></li>
+                <li> <a href="#">CCCC</a></li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        window.onload=function(){
+            var span=document.getElementsByTagName("span");
+            var reg=new RegExp("\\bnewHeight\\b")
+            for(var i=0;i<span.length;i++){
+                span[i].onclick=function(){
+                    var ul=this.nextSibling.nextSibling;
+                    // 
+                    if(!reg.test(ul.className)){
+                        ul.className+=" newHeight";
+                    }else{
+                        ul.className=ul.className.replace("newHeight","");
+                    }
+                    
+                };
+            }
+        };
+    </script>
+</body>
+</html>

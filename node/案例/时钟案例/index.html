@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>时钟案例</title>
+    <style>
+        #box1 {
+            width: 110px;
+            height: 100px;
+            background: #fff;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box1">
+    </div>
+    <script>
+        let box1 = document.querySelector('#box1');
+        getTiem();
+        setInterval(getTiem, 1000);
+        function getTiem() {
+            let time = new Date() - 0;
+            let times = time / 1000;
+            let h = parseInt(times / 60 / 60 % 24);
+            h = h < 10 ? '0' + h : h;
+            let m = parseInt(times / 60 % 60);
+            m = m < 10 ? '0' + m : m;
+            let s = parseInt(times % 60);
+            s = s < 10 ? '0' + s : s;
+            box1.innerHTML = `${h}时${m}分${s}秒`;
+        }
+        //  function fn() {
+        //         console.log(this);
+        //         return () => {
+        //             console.log(this);
+        //         }
+        //     }
+        //     const obj = { name: 'TOM', age: 18 };
+        //     const resF = fn.call(obj);
+        //     resF();
+    </script>
+</body>
+
+</html>

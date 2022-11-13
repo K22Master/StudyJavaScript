@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>基本使用</title>
+    <script src="../../Js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <app></app>
+        <hr>
+
+    </div>
+    <script>
+        // 创建student组件
+        const student = Vue.extend({
+            template: `
+            <div>
+                <h2>学生姓名：{{studentName}}</h2>
+                <h2>年龄：{{age}}</h2>
+            </div>
+            `,
+            data() {
+                return {
+                    studentName: '张胜男',
+                    age: 18
+                };
+            }
+        });
+        // 创建school组件
+        const school = Vue.extend({
+            template: `
+            <div>
+                <h2>学校名称：{{schoolName}}</h2>
+                <h2>学校地址：{{address}}</h2>
+                <student></student>
+            </div>
+            `,
+            data() {
+                return {
+                    schoolName: '湖北工厂',
+                    address: '孝感'
+                }
+            },
+            components: {
+                student
+            }
+        });
+
+        //创建hello组件
+        const hello = Vue.extend({
+            template: `
+            <div>
+                <h2>{{msg}}</h2>
+            </div>`,
+            data() {
+                return {
+                    msg: 'Hello'
+                };
+            }
+        });
+
+        const app = Vue.extend({
+            template: `
+            <div>
+                <school></school>
+                <hello></hello>    
+            </div>
+            `,
+            components: {
+                school,
+                hello
+            }
+        });
+
+        // 创建vm
+        new Vue({
+            el: '#app',
+            // 注册组件
+            components: {
+                app
+            }
+        });
+    </script>
+</body>
+
+</html>

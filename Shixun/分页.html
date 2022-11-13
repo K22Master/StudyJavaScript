@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="Js/vue.js"></script>
+    <script src="ElementUI/index.js"></script>
+    <link rel="stylesheet" href="ElementUI/index.css">
+</head>
+
+<body>
+    <div id="app">
+        <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange"
+            :current-page="currentPage4" :page-sizes="[100, 200, 300, 400]" :page-size="100"
+            layout="total, sizes, prev, pager, next, jumper" :total="400">
+        </el-pagination>
+    </div>
+</body>
+<script>
+    let v = new Vue({
+        el: "#app",
+
+        methods: {
+            handleSizeChange(val) {
+                console.log(`每页 ${val} 条`);
+            },
+            handleCurrentChange(val) {
+                console.log(`当前页: ${val}`);
+            }
+        },
+        data() {
+            return {
+                currentPage1: 5,
+                currentPage2: 5,
+                currentPage3: 5,
+                currentPage4: 4
+            };
+        }
+    });
+</script>
+
+</html>

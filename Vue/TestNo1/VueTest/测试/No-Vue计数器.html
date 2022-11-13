@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <h2>
+        当前计数：{{conter}}
+    </h2>
+<!--    方法一-->
+<!--    <button v-on:click="conter++">+</button>-->
+<!--    <button v-on:click="conter&#45;&#45;">-</button>-->
+<!--方法二,调用函数-->
+    <button v-on:click="add">+</button>
+    <button v-on:click="sub">-</button>
+</div>
+<script src="../Js/vue.js"></script>
+<script>
+    const app=new Vue({
+        el:'#app',
+        data:{
+            conter:0
+        },
+        methods:{//定义方法
+            add: function (){
+                console.log("add调用");
+                this.conter++;
+            },
+            sub: function (){
+                console.log("sub调用");
+                this.conter--;
+            }
+        }
+    })
+</script>
+</body>
+</html>

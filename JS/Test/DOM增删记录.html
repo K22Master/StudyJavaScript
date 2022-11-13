@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM增加删除记录</title>
+</head>
+<body>
+    <table id="Etable">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Salary</th>
+            <th>&nbsp;</th>
+        </tr>
+        <tr>
+            <td>Tom</td>
+            <td>tom@tom.tom</td>
+            <td>5000</td>
+            <td><a href="deleteEmp?id=001">Delete</a></td>
+        </tr>
+        <tr>
+            <td>Jeck</td>
+            <td>Jeck@tom.tom</td>
+            <td>6000</td>
+            <td><a href="deleteEmp?id=002">Delete</a></td>
+        </tr>
+        <tr>
+            <td>Blak</td>
+            <td>blak@tom.tom</td>
+            <td>5200</td>
+            <td><a href="deleteEmp?id=003">Delete</a></td>
+        </tr>
+    </table>
+    <div id="formDiv">
+        <table>
+            <tr>
+                <td>name:</td>
+                <td><input type="text" name="empName" id="empName"></td>
+            </tr>
+            <tr>
+                <td>email:</td>
+                <td><input type="text" name="empEmail" id="empEmail"></td>
+            </tr>
+            <tr>
+                <td>salary:</td>
+                <td><input type="text" name="empSalary" id="empSalary"></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <button id="addEmp" value="abc">Submit</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        window.onload=function(){
+            // 创建删除函数
+            function delA(){
+                // 获取当前的tr
+                var tr=this.parentNode.parentNode;
+                    // 获取节点的名字
+                    var name = tr.children[0].innerHTML;
+                    // 删除之前弹出提示框
+                    var flage=confirm("确认删除"+name+"吗?");
+                    if(flage){
+                    // 删除tr
+                        tr.parentNode.removeChild(tr);
+                    }
+                    // 通过在响应函数的末尾添加return false来取消默认行为
+                    return false;
+            }
+            // 点击提交时的提交信息
+            var addEmp=document.getElementById("addEmp");
+            var num=3;
+            addEmp.onclick=function(){
+                // 获取表单
+                var Etable=document.getElementById("Etable");
+                // 获取name值
+                var empName=document.getElementById("empName").value;
+                // 获取email值
+                var empEmail=document.getElementById("empEmail").value;
+                // 获取salary值
+                var empSalary=document.getElementById("empSalary").value;
+                // 创建tr节点
+                var trs=document.createElement("tr");
+                // id值加1
+                num++;
+                // 设置tr的内容
+                trs.innerHTML="<td>"+empName+"</td><td>"+empEmail+"</td><td>"+empSalary+"</td><td><a href='deleteEmp?id="+num+"'>Delete</a></td>"
+                // 给新增的数据,设置删除事件
+                trs.getElementsByTagName("a")[0].onclick=delA;
+                // 通过获取table的第一个子元素节点taboy,并向其添加创建节点tr
+                Etable.children[0].appendChild(trs);
+            };
+            
+            // 点击超链接之后，删除一个员工
+            // 获取所有超连接
+            var allA= document.getElementsByTagName("a");
+            // 为每个超链接绑定单击响应事件
+            for(var i=0;i<allA.length;i++){
+                allA[i].onclick=delA;
+            }
+        };
+    </script>
+</body>
+</html>

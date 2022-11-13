@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>sessionStorage</h2>
+    <button onclick="SaveData()">保存</button>
+    <button onclick="readData()">读取</button>
+    <button onclick="delData()">删除</button>
+    <button onclick="clearData()">清空</button>
+    <script>
+        let data = {
+            name: 'Tom',
+            age: 100
+        }
+        // 存储
+        function SaveData() {
+            // sessionStorage是window上的属性，直接使用，setitem方法是用来设置存储数据
+            sessionStorage.setItem('msg', '测试数据！！！！');
+            sessionStorage.setItem('Tomdata', JSON.stringify(data));
+
+        }
+        // 读取
+        function readData() {
+            console.log(JSON.parse(sessionStorage.getItem('Tomdata')));
+        }
+        // 删除
+        function delData() {
+            sessionStorage.removeItem('msg');
+        }
+        // 清空
+        function clearData() {
+            sessionStorage.clear();
+        }
+    </script>
+</body>
+
+</html>

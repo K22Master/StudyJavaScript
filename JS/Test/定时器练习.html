@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box1{
+            width: 200px;
+            height: 200px;
+            background-color: #baf;
+            position: absolute;
+        }
+        #box2{
+            width: 0;
+            height: 1000px;
+            border-left: 1px solid black;
+            position: absolute;
+            left: 200px;
+            top: 0px;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn1">点击</button>
+    <div id="box1"></div>
+    <div id="box2"></div>
+    <script>
+        window.onload=function(){
+            var box1=document.getElementById("box1");
+            var btn1=document.getElementById("btn1");
+            var timer;
+            btn1.onclick=function(){
+                clearInterval(timer);
+                timer=setInterval(function(){
+                    box1.style.left=box1.offsetLeft+10+"px";
+                    if(box1.offsetLeft==200){
+                        clearInterval(timer);
+                    }
+                }, 300);
+                
+            };
+        };
+    </script>
+</body>
+</html>

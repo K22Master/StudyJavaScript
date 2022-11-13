@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <h1>你好{{name}}</h1>
+</div>
+<script src="../../Js/vue.js"></script>
+<script>
+    //el的两种写法
+    // const v=new Vue({
+    //     //创建时就想好为谁服务
+    //     //el:"#app",
+    //     data:{
+    //         name:"索菲亚"
+    //     }
+    // })
+    // //回头在想为谁服务网
+    // setTimeout(()=>{
+    //     v.$mount('#app')
+    // },1000)
+
+    //函数式
+    new Vue({
+        el:"#app",
+        data:function (){
+            return {
+                name:"索菲亚"
+            }
+        }
+    })
+</script>
+</body>
+</html>

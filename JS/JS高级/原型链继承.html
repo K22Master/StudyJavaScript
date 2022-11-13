@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原型链继承</title>
+</head>
+<body>
+    <script>
+        function Supper(){
+          this.supper="Supper property";  
+        };
+        Supper.prototype.showSupperProp=function(){
+            console.log(this.supper);
+        }
+        function Sub(){
+            this.sub="Sub property";
+        };
+        Sub.prototype=new Supper();
+        Sub.prototype.constructor=Sub;
+        Sub.prototype.ShowSubProp=function(){
+            console.log(this.sub);
+        }
+        var sub = new Sub();
+        sub.showSupperProp();
+        sub.ShowSubProp();
+    </script>
+</body>
+</html>

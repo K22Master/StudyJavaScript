@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>轮播图！</title>
+</head>
+<body>
+    <img src="img/01.jpg" id="img1">
+    <br>
+    <button id="btn1">开始</button>
+    <button id="btn2">停止</button>
+    <script>
+        window.onload=function(){
+            // 获取img标签
+            var img1=document.getElementById("img1");
+            // 创建一个数组保存图片地址
+            var imgArr=["img/01.jpg","img/02.jpg","img/03.jpg"];
+            // 创建变量保存数组索引
+            var index=0;
+            // 获取按钮
+            var btn1=document.getElementById("btn1");
+            var btn2=document.getElementById("btn2");
+            // 定义定时器的编号
+            var tiemr;
+            btn1.onclick=function(){
+                // 开启定时器前，关闭上一个定时器
+                clearInterval(tiemr);
+                // 开启定时器
+                tiemr=setInterval(function(){
+                    index++;
+                    if(index==imgArr.length){
+                        index=0;
+                    }
+                    img1.src=imgArr[index];
+                },1000);
+            };
+            btn2.onclick=function(){
+                clearInterval(tiemr);
+            };
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片转换</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #CCCCCC;
+        }
+
+        #outer {
+            width: 380px;
+            /* 用margin设置居中一定要设置宽度 */
+            margin: 50px auto;
+            padding: 15px;
+            background-color: #FFFFFF;
+            text-align: center;
+        }
+
+        #btn {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <p id="info"></p>
+        <img src="img/01.jpg" alt="广告1">
+        <br>
+        <div id="btn">
+            <button id="prev">上一张</button>
+            <button id="next">下一张</button>
+        </div>
+
+    </div>
+    <script>
+        // 点击按钮切换图片
+        window.onload = function () {
+            var prev = document.getElementById("prev");
+            var next = document.getElementById("next");
+            var info = document.getElementById("info");
+            var img = document.getElementsByTagName("img")[0];
+            var imgarr = ["img/01.jpg", "img/02.jpg", "img/03.jpg"]
+            var i = 0;
+            info.innerHTML = "一共有" + imgarr.length + "张图片，当前是第" + (i + 1) + "张";
+            prev.onclick = function () {
+                i--;
+                if (i < 0) {
+                    i = imgarr.length - 1;
+                }
+                img.src = imgarr[i];
+                info.innerHTML = "一共有" + imgarr.length + "张图片，当前是第" + (i + 1) + "张";
+            };
+            next.onclick = function () {
+                i++;
+                if (i > imgarr.length - 1) {
+                    i = 0;
+                }
+                img.src = imgarr[i];
+                info.innerHTML = "一共有" + imgarr.length + "张图片，当前是第" + (i + 1) + "张";
+            };
+        };
+    </script>
+</body>
+
+</html>
